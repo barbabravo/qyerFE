@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>Swipe 焦点图左右滚动</title>
+<link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-data.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+<style type="text/css">
+#slider {
+	width: 100%; height: 300px;
+}
+#position {
+	position: absolute; left: 0; bottom: 20px; width: 100%; text-align: center;
+}
+#position li {
+	display: inline-block; width: 20px; height: 20px; background-color: #fff; border-radius: 50%;
+}
+#position li.on {
+	background-color: #ff0;
+}
+
+
+#mySwipe {
+	width: 100%; height: 300px; background-color: #0098f8;
+}
+</style>
+</head>
+
+<body>
+
+<section class="container">
+	
+	<p><a href="https://github.com/bradbirdsall/Swipe" target="_blank">Swipe官方API文档</a></p>
+	<br><br>
+	<h1>slider滑动模式：</h1>
+	<!--before-->
+	<div id='slider' class='swipe'>
+		<div class='swipe-wrap'>
+			<div class='image' style='background:url(http://static.qyer.com/m/project/place/images/tmp/img-city.jpg) center no-repeat;background-size: cover'></div>
+			<div class='image' style='background:url(http://static.qyer.com/m/project/place/images/tmp/img-city.jpg) center no-repeat;background-size: cover'></div>
+			<div class='image' style='background:url(http://static.qyer.com/m/project/place/images/tmp/img-city.jpg) center no-repeat;background-size: cover'></div>
+			<div class='image' style='background:url(http://static.qyer.com/m/project/place/images/tmp/img-city.jpg) center no-repeat;background-size: cover'></div>
+		</div>
+		<ul id='position'>
+			<li class='on'></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+    <!--end-->
+	<br><br><br><br><br><br>
+	<h1>其它模式：</h1>
+	<!--before-->
+	<div id='mySwipe' class='swipe'>
+		<div class='swipe-wrap'>
+			<div><b>0</b></div>
+			<div><b>1</b></div>
+			<div><b>2</b></div>
+			<div><b>3</b></div>
+			<div><b>4</b></div>
+			<div><b>5</b></div>
+			<div><b>6</b></div>
+			<div><b>7</b></div>
+			<div><b>8</b></div>
+			<div><b>9</b></div>
+		</div>
+	</div>
+	<div style='text-align:center;padding-top:20px;'>
+	  <button onclick='mySwipe.prev()'>prev</button> 
+	  <button onclick='mySwipe.next()'>next</button>
+	</div>
+	<!--end-->
+	<br><br><br><br><br><br>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+	//slider滑动模式
+	require(['common/ui/swipe/swipe'],function(){
+		$('#slider').Swipe({
+		    auto: 3000,
+		    continuous: true,
+		    callback: function(pos) {
+		
+		      var i = bullets.length;
+		      while (i--) {
+		        bullets[i].className = ' ';
+		      }
+		      bullets[pos].className = 'on';
+		
+		    }
+		  }).data('Swipe');
+		
+		var bullets = document.getElementById('position').getElementsByTagName('li');
+	});
+	
+	//其它模式
+	require(['common/ui/swipe/swipe'],function(){
+		window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
+	});
+});
+</script>
+</body>
+</html>

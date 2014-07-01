@@ -1,0 +1,66 @@
+.qui-number > .nav > div {
+    color: #9ea3ab;
+    font-size: 23px;
+}
+.qui-number {
+    margin-bottom: 10px;
+}
+.qui-number > .nav {
+    display: -webkit-box;
+    display:-moz-box;
+    display:box;
+
+    -webkit-box-orient: horizontal;
+    -moz-box-orient:horizontal;
+    box-orient:horizontal;
+
+    /*垂直居中*/
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-box-align: center;
+    box-align: center;
+
+    padding: 25px 0;
+    border: solid 1px #e2e2e2;
+    border-radius: 3px;
+    background: #fff;
+}
+.qui-number .nav .nav_prev,.qui-number .nav .nav_next {
+    text-align: center;
+    font-size: 34px;
+    -webkit-box-flex: 1;
+}
+.qui-number > .nav > .nav_cCumber {
+    color: #2bab79;
+    font-size: 45px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    -webkit-box-flex: 4;
+}
+.qui-popup-base_content {
+    padding: 0 15px;
+    height: 100%;
+    box-sizing: border-box;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+.queren_btn,.cancel_btn{
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0 15px 0;
+}
+.queren_btn{
+    -webkit-box-flex: 1;
+    text-align: -webkit-center;
+    color: #fff;
+    background-color: #2bab79;
+    border: solid 1px #2bab79;
+}

@@ -1,0 +1,192 @@
+.qui-search{}
+
+.qui-search_nav{
+    height: 44px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #d3d4d4;
+    box-shadow: 0px 1px 1px #ccc;
+    display: -webkit-box;
+}
+.qui-search_nav >div{
+    display: -webkit-box;
+}
+.qui-search_nav_return{
+    color: #9ea3ab;
+    border-right: 1px solid #9ea3ab;
+    width: 39px;
+    text-align: -webkit-center;
+    padding-top: 8px;
+}
+
+.qui-search_nav_search{
+    -webkit-box-flex: 1;
+    position: relative;
+}
+
+.qui-search_nav_search > input{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    border:none;
+    color: #444;
+    padding: 0 38px 0 10px;
+    text-overflow: clip;
+    min-height: 42px;
+}
+.qui-search_nav_search > .staticIcon{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 10px;
+    top: 10px;
+
+    background-repeat: no-repeat;
+    background-image: url(http://static.qyer.com/m/common/ui/search2/icons.png);
+    background-size: 18px;
+    background-position: 0 1px;
+}
+.qui-search_nav_search > .js_clear{
+    background-position: -1px -18px;
+}
+
+.qui-search_nav_search > .js_searching{
+    background-image: url(http://static.qyer.com/m/basic/images/icon-turning.gif);
+    background-position: 0;
+}
+
+
+
+
+.qui-search_nav_searchBtn{
+    background-color: #2bab79;
+    color: #fff;
+    width: 61px;
+    box-sizing: border-box;
+    text-align: -webkit-center;
+    padding-top: 10px;
+}
+
+.qui-search_content{
+    box-sizing: border-box;
+    margin-top: 15px;
+    padding:0 15px 15px 15px;
+    /*max-height: 225px;*/
+    overflow: auto;
+}
+.qui-search_content > ul {
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    color: #444;
+}
+
+.qui-search_content > ul > li{
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #e6e8ea;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.qui-search_content > ul > li:last-child{
+    border-bottom: none;
+}
+
+.qui-search_r1{
+    background-repeat: no-repeat;
+    background-position: 0 -38px;
+    background-size:18px 93px;
+    padding-left: 23px;
+    background-size: 16px;
+}
+.qui-search_r2_title{
+    padding-left: 10px;
+}
+.qui-search_r2_item{
+    padding-left: 23px;
+}
+ 
+.qui-search_noResult{
+    text-align: center;
+}
+
+.qui-search_noResult > div{
+    margin: 0 auto;
+    display: inline-block;
+    text-align: left;
+}
+
+
+.qui-search_result5_ul > li > span{
+    color: #ccc;
+}
+
+
+.qui-search_result6_ul{}
+.qui-search_result6_ul > li{
+    height: 38px !important;
+    line-height: 38px !important;
+}
+.qui-search_result6_ul > li > .pTitle{
+    line-height: 14px;
+    font-size: 14px;
+    margin-top: 9px;
+}
+.qui-search_result6_ul > li > .pInfo{
+    line-height: 12px;
+    font-size: 12px;
+    margin-top: 7px;
+    color: #ccc;
+}
+
+.qui-search_result6_ul > .infoLI{
+    height: auto !important;
+    width: auto !important;
+    padding-top: 10px;
+}
+.qui-search_result6_ul > .infoLI > .infoLI_imgDiv{
+    vertical-align: top;
+    display: inline-block;
+}
+.qui-search_result6_ul > .infoLI > .infoLI_imgDiv > img{
+    width: 60px;
+    height: 60px;
+}
+.qui-search_result6_ul > .infoLI > .infoLI_info{
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 10px;
+}
+.qui-search_result6_ul > .infoLI > .infoLI_info > .infoLI_cnName{
+    font-size: 17px;
+    line-height: 17px;
+    margin-top: 4px;
+}
+.qui-search_result6_ul > .infoLI > .infoLI_info > .infoLI_enName{
+    font-size: 17px;
+    line-height: 17px;
+    margin-top: 5px;
+}
+.qui-search_result6_ul > .infoLI > .infoLI_info > .infoLI_cityInfo{
+    line-height: 12px;
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 4px;
+}
+
+
+.qui-search_result_createBtn_div{
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    height: 44px;
+    line-height: 44px;
+    font-size:17px;
+    margin-top: 10px;
+    padding-left: 12px;
+}
+.qui-search_result_createBtn_div > span{
+    color:#3f9f5f;
+}

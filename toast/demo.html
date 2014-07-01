@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+<link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+<style>
+.qui-page{text-align:center;}
+.qui-btn{margin-bottom:20px;}
+</style>
+</head>
+<body>
+<section class="qui-page">
+	<input type="button" name="" value="点击出现错误弹层" class="qui-btn btnA fluid" id="btn0"/>
+	<input type="button" name="" value="点击出现警告弹层" class="qui-btn btnA fluid" id="btn1"/>
+	<input type="button" name="" value="点击出现正确弹层" class="qui-btn btnA fluid" id="btn2"/>
+	<input type="button" name="" value="点击出现信息弹层" class="qui-btn btnA fluid" id="btn3"/>
+	<input type="button" name="" value="点击出现自定义弹层" class="qui-btn btnA fluid" id="btn4"/>
+
+
+	<input type="button" name="" value="点击出现信息弹层，3S后消失" class="qui-btn btnA fluid" id="btn5"/>
+</section>
+	<script>
+
+	require(['common/ui/toast/toast'],function(t){
+		$("#btn0").on(qyerUtil.EVENT.CLICK,function(){
+			t.show({
+				type:'error',
+				toastTitle:'出错了',
+				toastContent:'你的权限不够，请退出',
+				buttons:[
+				{
+					text:'重试',
+					ipg:'ipg-retry',
+					onClick:function(){
+						alert("出错了");
+					}
+				}
+				],
+				cancelButton:true,
+				cancelButtonText:'取消',
+				cancelBtnIpg:'ipg-cancel',
+				onCancel:function(){
+					alert("取消了")
+				}
+			})
+		})
+
+		$("#btn1").on(qyerUtil.EVENT.CLICK,function(){
+			t.show({
+				type:'warn',
+				toastTitle:'没有操作权限',
+				toastContent:'你的权限不够，请退出',
+				buttons:[
+				{
+					text:'重试',
+					onClick:function(){
+						alert("重试");
+					}
+				}
+				],
+				cancelButton:true,
+				cancelButtonText:'取消',
+				onCancel:function(){
+					alert("取消了")
+				}
+			})
+		})
+
+
+		$("#btn2").on(qyerUtil.EVENT.CLICK,function(){
+			t.show({
+				type:'correct',
+				toastTitle:'注册成功',
+				toastContent:'欢迎加入穷游大家庭',
+				buttons:[
+				{
+					text:'下一步',
+					onClick:function(){
+						alert("下一步");
+						t.hide();
+					}
+				}
+				],
+				cancelButton:false
+			})
+		})
+
+		$("#btn3").on(qyerUtil.EVENT.CLICK,function(){
+			t.show({
+				type:'info',
+				toastTitle:'提示信息标题',
+				toastContent:'你的权限不够，请退出',
+				buttons:[
+				{
+					text:'重试',
+					onClick:function(){
+						alert("重试");
+					}
+				}
+				],
+				cancelButton:true,
+				cancelButtonText:'取消',
+				onCancel:function(){
+					alert("取消了")
+				}
+			})
+		})
+		$("#btn4").on(qyerUtil.EVENT.CLICK,function(){
+			t.show({
+				type:'custom',
+				iconURL : 'http://static.qyer.com/m/common/ui/toast/custom.png',
+				toastTitle:'你NB你来',
+				buttons:[
+				{
+					text:'弄死那个美工',
+					onClick:function(){
+						alert("弄死那个美工");
+					}
+				},
+				{
+					text:'查看其他职位空缺',
+					onClick:function(){
+						alert("查看其他职位空缺");
+					}
+				}
+				],
+				cancelButton:true,
+				cancelButtonText:'关闭/取消',
+				onCancel:function(){
+					alert("取消了");
+				}
+			})
+		})
+
+
+		$("#btn5").on(qyerUtil.EVENT.CLICK,function(){
+			t.show({
+				type:'correct',
+				toastTitle:'注册成功',
+				toastContent:'欢迎加入穷游大家庭',
+				cancelButton:false,
+				onShow:function(){
+					setTimeout(function(){	
+						alert("弹层消失回调");
+						t.hide();
+					},3000);
+				}
+			})
+		})
+	})
+		
+	</script>
+</body>
+</html>

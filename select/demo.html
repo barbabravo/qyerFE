@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+	<meta charset="UTF-8">
+	<title>detail</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="http://static.qyer.com/m/basic/css/base.css" />
+	<link rel="stylesheet" href="http://static.qyer.com/m/basic/css/headfoot.css" />
+	<script type="text/javascript" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+	<script type="text/javascript" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+	<script type="text/javascript" src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+	<script>
+
+    	function show1(){
+    		var renderData = [
+    			[
+    				{'text':'text1','value':'value1'},
+    				{'text':'长文本测试长文本测试','value':'value2'},
+    				{'text':'text4','value':'value4'},
+    				{'text':'text5','value':'value5'},
+    			]
+    		];
+			require(['common/ui/select/select'],function(select){
+				select.show({
+					data:renderData,
+					title:'没有默认值，选中第一个',
+					onSelect:function (aValueList) {
+						alert( JSON.stringify(aValueList) );
+					}
+				});
+			});
+    	}
+
+
+    	function show3(){
+    		var renderData = [
+    			[
+    				{'text':'text1','value':'value1'},
+    				{'text':'text2','value':'value2'},
+    				{'text':'text3','value':'value3','select':true},
+    				{'text':'text4','value':'value4'},
+    				{'text':'text5','value':'value5'},
+    			]
+    		];
+			require(['common/ui/select/select'],function(select){
+				select.show({
+					data:renderData,
+					title:'有默认选中值',
+					onSelect:function (aValueList) {
+						alert( JSON.stringify(aValueList) );
+					}
+				});
+			});
+    	}
+
+
+
+
+
+
+
+
+
+
+    	function showN(){
+    		var renderData = [
+    			[
+    				{'text':'text1','value':'value1'},
+    				{'text':'text2','value':'value2'},
+    				{'text':'text3','value':'value3','select':true},
+    				{'text':'text4','value':'value4'},
+    				{'text':'text5','value':'value5'}
+    			],
+    			[
+    				{'text':'text1','value':'value1'},
+    				{'text':'text3','value':'value3','select':true},
+    				{'text':'text2','value':'value2'},
+    				{'text':'text4','value':'value4'},
+    				{'text':'text5','value':'value5'}
+    			],
+    			[
+    				{'text':'text1','value':'value1'},
+    				{'text':'text2','value':'value2'},
+    				{'text':'text4','value':'value4'},
+    				{'text':'text5','value':'value5'},
+    				{'text':'text3','value':'value3','select':true}
+    			]
+    		];
+			require(['common/ui/select/select'],function(select){
+				select.show({
+					data:renderData,
+					title:'多列展示',
+					onSelect:function (aValueList) {
+						alert( JSON.stringify(aValueList) );
+					}
+				});
+			});
+    	}
+
+    	$(function () {
+    		$('#ipu1').on(qyerUtil.EVENT.CLICK,function () {show1(); });
+    		$('#ipu3').on(qyerUtil.EVENT.CLICK,function () {show3(); });
+    		$('#ipu2').on(qyerUtil.EVENT.CLICK,function () {showN(); });
+    	})
+
+	</script>
+	
+</head>
+<body style="padding-top: 100px;">
+
+	<input id="ipu1" type="button" value="显示1列"  />
+	<input id="ipu3" type="button" value="显示1列,带默认值"  />
+	<input id="ipu2" type="button" value="显示多列"  />
+
+
+    <div style="color:red;">因使用 touch 事件，请采用移动设备仿真形式查看。</div>
+
+	<!-- <div id="select" class="qui-select clearfix" >
+		<div class="current"></div>
+		<div class="top"></div>
+		<div class="end"></div>
+
+		<ul class="list" data-count="24" style="top: 100px;">
+			<li>00</li>
+			<li>01</li>
+			<li>02</li>
+			<li>03</li>
+			<li>04</li>
+			<li>05</li>
+			<li>06</li>
+			<li>07</li>
+			<li>08</li>
+			<li>09</li>
+			<li>10</li>
+			<li>11</li>
+			<li>12</li>
+			<li>13</li>
+			<li>14</li>
+			<li>15</li>
+			<li>16</li>
+			<li>17</li>
+			<li>18</li>
+			<li>19</li>
+			<li>20</li>
+			<li>21</li>
+			<li>22</li>
+			<li>23</li>
+		</ul>
+
+		<ul class="list" data-count="12" style="top: 100px;">
+			<li>00</li>
+			<li>05</li>
+			<li>10</li>
+			<li>15</li>
+			<li>20</li>
+			<li>25</li>
+			<li>30</li>
+			<li>35</li>
+			<li>40</li>
+			<li>45</li>
+			<li>50</li>
+			<li>55</li>
+		</ul>
+
+		<ul class="list" data-count="4" style="top: 100px;">
+			<li>当日</li>
+			<li>次日</li>
+			<li>+2</li>
+			<li>+3</li>
+		</ul>
+		
+		
+	</div> -->
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+        
+        <script src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/require.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+        <script>
+
+        $(function(){
+            $('#p1').on(qyerUtil.EVENT.CLICK,show1);
+            $('#p2').on(qyerUtil.EVENT.CLICK,show2);
+            $('#p3').on(qyerUtil.EVENT.CLICK,show3);
+        });
+
+        	function show1(){
+				require(['common/ui/datePicker/datePicker'],function(d){
+					d.show({
+						onSelect:function(aValue){
+							$('#log').html( '选择了日期： ' +  aValue )
+						}
+					});
+				});
+        	}
+
+        	function show2(){
+				require(['common/ui/datePicker/datePicker'],function(d){
+					d.show({
+						type:2,
+						onSelect:function(aStartValue,aEndValue){
+							$('#log2').html( '起始日期： ' +  aStartValue + '<br />' + '结束日期： ' + aEndValue );
+						}
+					});
+				});
+        	}
+
+            function show3(){
+                require(['common/ui/datePicker/datePicker'],function(d){
+                    d.show({
+                        type:2,
+                        startText:"入住日期",
+                        endText:"退房日期",
+                        startTime:'2011-1-1',
+                        endTime:'2013-3-3',
+                        okText:"OK",
+                        title:"外部定义title",
+                        cancelText:"Cancel"
+                    });
+                });
+            }
+
+
+        </script>
+    </head>
+    <body>
+    	<input id="p1" type="button" value="显示类型 1 的日历 "  />
+    	<p id="log"></p>
+    	<input id="p2" type="button" value="显示类型 2 的日历 "  />
+    	<p id="log2"></p>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <p> 展示丰富定制：</p>
+        <p>1 出发日期显示为：“入住日期”， </p>
+        <p>2 结束日期显示为：“退房日期”， </p>
+        <p>3 起始默认选中时间为：2011-1-1， </p>
+        <p>4 结束默认选中时间为：2013-3-3， (不设置此项的话，结束时间是开始时间后3天)</p>
+        <input id="p3" type="button" value="展现定制" />
+
+
+	</body>
+
+
+
+
+	<style>
+
+
+
+	</style>
+</html>

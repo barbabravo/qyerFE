@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>search 搜索组件</title>
+<link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+</head>
+
+<body>
+
+<section class="container">
+    <h2>范例：搜索联想</h2>
+    <p><input type="text" placeholder="基础搜索" id="showStdSearch" /></p>
+    <p><input type="button" value="非ajax获取结果" id="showLocalSearch" />  （本地函数返回数据，获取结果增加<code>onSelect</code>跳过标准搜索行为）</p>
+    <h2>范例：匹配结果</h2>
+    <p><input type="text" placeholder="匹配结果" id="showLegend" /></p>
+</section>
+
+
+<script type="text/javascript">
+    $('#showStdSearch')[0].onclick = (function(e){
+        e.preventDefault(); // recommend to prevent focus on the item
+        $(this).blur();
+        require(['common/ui/search/search'], function(s){
+            s.show({
+                type : 'search',
+                placeholder : '搜索目的地',
+                getAjaxData : 'somesite.com/getAjaxData.php?key={{= val}}',
+                mountData:function(data,val){
+                    var oArr = [];
+                    for(var i=0,len=data.length;i<len;i++){
+                        oArr.push((function(j){
+                            var o = {};
+                            o.key = data[j].key;
+                            o.val = data[j].val;
+                            return o;
+                        })(i));
+                    }
+                    return (oArr + val);
+                },
+                standbyList:{
+                    data:[
+                        { 'key' : 1, 'val' : 1 },
+                        { 'key' : 2+'攻略', 'val' : 2+'攻略' },
+                        { 'key' : 3+'美食', 'val' : 3+'美食' },
+                        { 'key' : 4+'精选', 'val' : 4+'精选' },
+                        { 'val' : 5+'旅行百科', 'url' : 'http://place.qyer.com/' + 5 }
+                    ]
+                },
+                resultList:{
+                    onSelect : function (args) {
+                        if (args.data.url) {
+                            window.location.href = args.data.url;
+                        }
+                        else {
+                            args.default();
+                        }
+                    }
+                }
+            });
+        }); // end of require
+    });
+
+    $('#showLocalSearch')[0].onclick = (function() {
+        require(['common/ui/search/search'], function(s){
+            s.show({
+                type : 'search',
+                placeholder : '输入目的地，显示推荐词',
+                getLocalData : function (query) {
+                    return {
+                        'result' : 'ok',
+                        'data' : [
+                        { 'key' : query, 'val' : query },
+                        { 'key' : query+'攻略', 'val' : query+'攻略' },
+                        { 'key' : query+'美食', 'val' : query+'美食' },
+                        { 'key' : query+'精选', 'val' : query+'精选' },
+                        { 'val' : query+'旅行百科', 'url' : 'http://place.qyer.com/' + query }
+                    ]};
+                },
+                doSearch : function (query) {
+                    alert('搜索词：' + query);
+                },
+                resultList : {
+                    onSelect : function (args) {
+                        if (args.data.url) {
+                            window.location.href = args.data.url;
+                        }
+                        else {
+                            args.default();
+                        }
+                    }
+                }
+            });
+        }); // end of require
+    });
+
+    $('#showLegend')[0].onclick = (function(e) {
+        e.preventDefault();
+        $(this).blur();
+        require(['common/ui/search/search'], function(s){
+            s.show({
+                type : 'legend',
+                placeholder : '从列表中选择机场',
+                getLocalData : function (query) {
+                    return {
+                        'result' : 'ok',
+                        'data' : [
+                            { key: 'LON', val: 'LON - 伦敦' },
+                            { key: 'LHR', val: 'LHR - 伦敦希思罗机场' },
+                            { key: 'LGW', val: 'LGW - 伦敦盖特威克机场' },
+                            { key: 'LCY', val: 'LCY - 伦敦城市机场' },
+                            { key: 'LTN', val: 'LTN - 伦敦卢顿' }
+                        ]
+                    };
+                },
+                doSearch : function (query) {
+                    alert('key: ' + query);
+                }
+            })
+        }) // end of require
+    });
+
+</script>
+</body>
+</html>

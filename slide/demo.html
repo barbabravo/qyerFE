@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+<style>
+	.a1,.a2{margin-bottom:30px;}
+	hgroup{padding:10px;background:#ccc;}
+	.list{height:0;overflow:hidden;}
+</style>
+
+	<script>
+		require(['common/ui/slide/slide'],function(d){	
+			$(".a1").on(qyerUtil.EVENT.CLICK,'hgroup',function(){
+				$(this).hasClass("down") ?
+				$(this).removeClass("down").html("点击下拉菜单").next().slideUp()
+				:				
+				$(this).addClass("down").html("再次点击收回菜单").next().slideDown();
+			});
+			$(".a2").on(qyerUtil.EVENT.CLICK,'hgroup',function(){
+				$(this).hasClass("down") ?
+				$(this).removeClass("down").html("点击下拉菜单").next().slideUp({'callback':function(){
+					alert('菜单已收回');
+				}})
+				:				
+				$(this).addClass("down").html("再次点击收回菜单").next().slideDown({'during':'1000','callback':function(){
+					alert('菜单已打开，内容为' + $(this).html());
+				}});
+			});
+		})
+	</script>
+</head>
+<body>
+
+	<div class="a1">
+		<hgroup class="slide">点击我打开下拉菜单</hgroup>
+		<ul class="list">
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+		</ul>
+	</div>
+	<div class="a2">
+		<hgroup>点击我下拉菜单，速度1000ms，回掉alert</hgroup>
+		<ul class="list">
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+			<li>菜单一</li>
+		</ul>
+	</div>
+</body>
+</html>

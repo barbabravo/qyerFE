@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>文本截字</title>
+<link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+<style type="text/css">
+.container .texts {
+	max-height: 24px;
+	overflow: hidden;
+	background-color: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<section class="container">
+	<div class="texts">
+		<p class="text">金门大桥(日语:ユニバーサルスタジオ )。被称为“洛杉矶的娱乐之都”，是唯一一个集电影、电视拍摄片场为一体的主题公园，为观众展现了一个真实的电影制片厂，影城内丰富的文...</p>
+	</div>
+	<br>
+	<div class="texts">
+		<p class="text">金门大桥</p>
+	</div>
+	<br>
+	<div class="texts">
+		<p class="text">金门大桥(日语:ユニバーサルスタジオ )。被称为“洛杉矶的娱乐之都”，是唯一一个集电影、电视拍摄片场为一体的主题公园，为观众展现了一个真实的电影制片厂，影城内丰富的文...</p>
+	</div>
+	<ul class="list">
+		<li>111</li>
+		<li>111</li>
+		<li style="display:none;">111</li>
+		<li style="display:none;">111</li>
+		<li style="display:none;">111</li>
+	</ul>
+	<ul class="list">
+		<li>111</li>
+		<li>111</li>
+	</ul>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+	//文本截字
+	require(['common/ui/clipText/clipText'],function(){
+		$(".texts").clipText({
+			ipg : "aaa"
+		});
+		$(".list").clipLi({
+			size : 2,
+			ipg : "bbb"
+		});
+	});
+});
+</script>
+</body>
+</html>

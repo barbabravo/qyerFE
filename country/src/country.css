@@ -1,0 +1,61 @@
+/*public*/
+.qui-triangle:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    border-right: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    background-color: #FFF;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+.qui-country{width: 100%;overflow: hidden;position: relative;-ms-touch-action: none;}
+.qui-country .qui-head{
+    width: 414px;
+    position: relative;
+    height: 51px;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+.qui-country .qui-head span{
+    display: inline-block;
+    float: left;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    margin-bottom: 6px;
+}
+.qui-triangle{
+    color: #2bab79;
+}
+.dayTravel .travelDetailBox_start{
+    border-top: 0;
+    margin-top: 0;
+}
+.qui-body div{
+    display: none;
+}

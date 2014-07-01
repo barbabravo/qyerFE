@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>leftSlide插件：绑定手势左滑事件</title>
+<link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+<style type="text/css">
+#box1 {
+	width: 100%; background-color: #f0f0f0;
+}
+#box1 li {
+	margin-bottom: 20px; padding: 10px; background-color: #0098f8; color: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<section class="container">
+	<h1>封装后的右侧滑动事件：</h1>
+	<ul id="box1">
+		<li>尝试右滑一下</li>
+		<li>尝试右滑一下</li>
+	</ul>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+	require(['common/ui/rightSlide/rightSlide'],function(){
+		$("#box1").rightSlide("li", function(event){
+			$(this).text("删除").css({"background-color":"#f00"});
+			//console.log(event);
+		});
+	});
+});
+</script>
+</body>
+</html>

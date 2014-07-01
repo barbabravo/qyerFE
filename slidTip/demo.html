@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+        
+       <script src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/require.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+        <script>
+
+            $(function(){
+                $('#p1').on(qyerUtil.EVENT.CLICK,show);
+            })
+
+            function getText() {
+                if( $('#longtext').val() == "1" ){
+                    return "提示文字，！虽然Toast正常情况下不会写这么多废话，但是这事谁也保不齐还是得留一手。";
+                }
+                else {
+                    return "提示文字";
+                }
+            }
+
+            function show(){
+                require(['common/ui/slidTip/slidTip'],function(slidTip){
+                    slidTip.show({
+                        type:$('#tipType').val(),
+                        text:getText(),
+                        delay:$('#closetime').val()
+                    });
+                });
+            };
+        </script>        
+    </head>
+    <body  >
+        <div class="qui-page">
+            选择提示类型
+            <select id="tipType">
+                <option value="1">载入中</option>
+                <option value="2">成功提示（绿色对勾）</option>
+                <option value="3">轻微错误，提醒用户了解的信息（黄色叹号）</option>
+                <option value="4">提示信息（蓝色 i ）</option>
+                <option value="5">红色叹号</option>
+                <option value="6">红叉</option>
+            </select>
+            <br />
+            是否测试长文本
+            <select id="longtext">
+                <option value="2">否</option>
+                <option value="1">是</option>
+            </select>
+            <br />
+            
+            <br />
+            关闭时间
+            <select id="closetime">
+                <option value="-1">自动（默认2秒）</option>
+                <option value="1">1秒</option>
+                <option value="2">2秒</option>
+                <option value="3">3秒</option>
+                <option value="4">4秒</option>
+                <option value="5">5秒</option>
+                <option value="6000">6秒</option>
+            </select>
+
+
+            <br />
+            <br />
+            <input id="p1" type="button" value="划出提示" />
+            <br />
+            <br />
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>

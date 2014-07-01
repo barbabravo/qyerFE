@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <meta   http-equiv="Pragma"   content="no-cache">   
+        <meta   http-equiv="Cache-Control"   content="no-cache">   
+        <meta   http-equiv="Expires"   content="0"> 
+
+
+        
+        <link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+        
+        <script src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/require.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+        <script>
+
+            $(function(){
+                $('#p1').on(qyerUtil.EVENT.CLICK,show1);
+                $('#p2').on(qyerUtil.EVENT.CLICK,show2);
+            })
+
+            var testObj = {
+                r1:function(){
+                    return [
+                        '<ul>',
+                        '   <li class="qui-search_r1" >烧酒胡同</li>',
+                        '   <li class="qui-search_r1" >巴黎</li>',
+                        '   <li class="qui-search_r1" >萨满石</li>',
+                        '   <li class="qui-search_r1" >萨满岩</li>',
+                        '   <li class="qui-search_r1" >烧酒胡同</li>',
+                        '   <li class="qui-search_r1" >巴黎</li>',
+                        '   <li class="qui-search_r1" >萨满石</li>',
+                        '   <li class="qui-search_r1" >萨满岩</li>',
+                        '</ul>'
+                    ].join('');
+                },
+                r2:function(){
+                    return [
+                        '<ul>',
+                        '   <li class="qui-search_r2_title">LON 伦敦 - 英国</li>',
+                        '   <li class="qui-search_r2_item" >LHR 伦敦景点1</li>',
+                        '   <li class="qui-search_r2_item" >LHR 伦敦景点2</li>',
+                        '   <li class="qui-search_r2_item" >LHR 伦敦景点3</li>',
+                        '   <li class="qui-search_r2_item" >LHR 伦敦景点4</li>',
+                        '   <li class="qui-search_r2_item" >LHR 伦敦景点5</li>',
+                        '</ul>'
+                    ].join('');
+                },
+                r3:function(){
+                    return [
+                        '<div class="qui-search_noResult" ><div>没有匹配的结果</div></div>',
+                    ].join('');
+                },
+                r4:function(){
+                    return [
+                        '<div class="qui-search_noResult"><div>没有匹配的结果文字超长， 没有匹配的结果文字超长， 没有匹配的结果文字超长， 没有匹配的结果文字超长， </div></div>',
+                    ].join('');
+                },
+                r5:function(){
+                    return [
+                        '<ul class="qui-search_result5_ul" >',
+                        '   <li>伦敦<span>交通</span></li>',
+                        '   <li>伦敦<span>美食</span></li>',
+                        '   <li>伦敦<span>购物</span></li>',
+                        '   <li>伦敦<span>穷游锦囊</span></li>',
+                        '   <li>伦敦<span>景点</span></li>',
+                        '</ul>'
+                    ].join('');
+                },
+                r6:function(){
+                    return [
+                        '<ul class="qui-search_result6_ul" >',
+                        '   <li class="infoLI">',
+                        '       <div class="infoLI_imgDiv" ><img src="http://static.qyer.com/m/common/ui/search/city.jpg" /></div>',
+                        '       <div class="infoLI_info">',
+                        '           <p class="infoLI_cnName">伦敦</p>',
+                        '           <p class="infoLI_enName">LONDON</p>',
+                        '           <p class="infoLI_cityInfo">英国城市</p>',
+                        '       </div>',
+                        '   </li>',
+
+                        '   <li><p class="pTitle">伦敦塔</p><p class="pInfo">Tower of London, 伦敦景点</p></li>',
+                        '   <li><p class="pTitle">伦敦塔</p><p class="pInfo">Tower of London, 伦敦景点</p></li>',
+                        '   <li><p class="pTitle">伦敦塔</p><p class="pInfo">Tower of London, 伦敦景点</p></li>',
+                        '   <li><p class="pTitle">伦敦塔</p><p class="pInfo">Tower of London, 伦敦景点</p></li>',
+                        '   <li><p class="pTitle">伦敦塔</p><p class="pInfo">Tower of London, 伦敦景点</p></li>',
+                        '   <li><p class="pTitle">伦敦塔</p><p class="pInfo">Tower of London, 伦敦景点</p></li>',
+                        '   <li><p class="pTitle">伦敦塔</p><p class="pInfo">Tower of London, 伦敦景点</p></li>',
+                        '</ul>',
+                        '<div class="qui-search_result_createBtn_div" >创建目的地“<span>伦敦塔</span>”</div>'
+                    ].join('');
+                },
+                r7:function(){
+                    return [
+                        '<div class="qui-search_result_createBtn_div" >创建目的地“<span>伦敦白鹭</span>”</div>'
+                    ].join('');
+                },
+                other:function(){
+                    return '还有其他类型 ？？？？ UI 中没写啊。';
+                },
+
+
+                getHTML:function(akey){
+                    return this['r'+akey]?this['r'+akey]():this.other();
+                }
+            };
+
+
+
+            function show1(){
+                require(['common/ui/search2/search2'],function(d){
+                    d.show({
+                        placeholder:'请输入搜搜关键字',
+                        onKeyDown:function(aKey){
+                            setTimeout(function(){
+                                d.pushHTML( testObj.getHTML( aKey ) ) ;
+                            },500);
+                        },
+                        onSelect:function(aLI){
+                            alert('点击了 li ，根据业务逻辑自己处理  li 里面的数据吧 ');
+                        },
+                        onButtonClick:function(aButton){
+                            alert('点击了 button ，根据业务逻辑自己处理吧 ');
+                        }
+                    });
+                });
+            }
+
+
+            function show2(){
+                require(['common/ui/search2/search2'],function(d){
+                    d.show({
+                        placeholder:'请输入搜搜关键字',
+                        hasBtn:true,
+                        onKeyDown:function(aKey){
+                            setTimeout(function(){
+                                d.pushHTML( testObj.getHTML( aKey ) ) ;
+                            },500);
+                        },
+                        onSelect:function(aLI){
+                            alert('点击了 li ，根据业务逻辑自己处理  li 里面的数据吧 ');
+                        },
+                        onButtonClick:function(aButton){
+                            alert('点击了 button ，根据业务逻辑自己处理吧 ');
+                        },
+                        onSearch:function(aKey){
+                            alert('点击了搜索按钮，执行搜索，关键字：' + aKey);
+                        }
+                    });
+                });
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <div class="qui-page">
+            <input id="p1" type="button"  value="显示搜索组件(联想方式)"  />
+            <p> 搜索1或2或3或4或5或6或7或8  查看不同的搜索结果样式</p>
+
+
+
+            <input id="p2" type="button"  value="显示搜索组件,（联想 + 搜索按钮）"  />
+
+
+        </div>
+    </body>
+</html>

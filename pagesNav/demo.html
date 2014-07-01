@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+        
+        <script src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/require.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+        <script>
+            $(function(){
+                $('#i').on(qyerUtil.EVENT.CLICK,function(){
+                    show();
+                });
+            });
+
+            function show(){
+                require(['common/ui/pagesNav/pagesNav'],function(){
+                    $('#d,#d2').qyerPagesNav({
+                        onGoPage:function(aPageNumber){
+                            $(this).next().html( '加载第 '+ aPageNumber +' 页数据' );
+                        }
+                    });
+                });
+            }
+
+        </script>
+        
+    </head>
+    <body  >
+        <div class="qui-page">
+
+            <input id="i"  type="button" value="创建分页导航" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div id="d" class="qui-pagesNav" data-page-count="100" data-page-current="1"></div>
+            <div></div>
+            <br />
+            <br />
+            <br />
+            <div id="d2" class="qui-pagesNav" data-page-count="100" data-page-current="55"></div>
+            <div></div>
+        </div>
+    </body>
+</html>

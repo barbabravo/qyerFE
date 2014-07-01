@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+        
+        <script src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/require.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+        <script>
+
+        $(function(){
+            $('#ip1').on(qyerUtil.EVENT.CLICK,show1);
+            $('#ip2').on(qyerUtil.EVENT.CLICK,show2);
+            $('#ip3').on(qyerUtil.EVENT.CLICK,show3);
+        });
+
+        function show1(){
+            require(['common/ui/editer1/editer1'],function(d){
+                d.show({
+                    okText:"发布",
+                    okBtnIpg:'okipg', //统计代码
+                    cancelText:"取消",
+                    cancelBtnIpg:'cancelipg',//统计代码
+                    title:"提问",
+                    input1Placeholder:"请输入标题",
+                    textarea1Placeholder:"请输入内容1111",
+                    maxLength:10,
+                    onOK:function(){
+                        alert('onOK 的回调函数 ， 模拟提交数据。，点击确定后关闭对话框'); 
+                        alert(Array.apply(this,arguments).join("\n"));
+                    }
+                });
+            });
+        } 
+
+        function show2(){
+            require(['common/ui/editer1/editer1'],function(d){
+                d.show({
+                    okText:"发布",
+                    cancelText:"取消",
+                    title:"提问",
+                    input1:false,
+                    textarea1Placeholder:"请输入内容",
+                    maxLength:10,
+                    onShow:function(){  
+                        $(".qui-editer1 textarea").click(function(){
+                            $(this).focus();
+                        });    
+                        $(".qui-editer1 textarea").trigger("click");
+                    },
+                    onOK:function(){                        
+                       // alert('onOK 的回调函数 ，模拟提交数据，认证未通过，点击确定后不关闭弹层');
+                       // alert(Array.apply(this,arguments).join("\n"));
+                        require(['common/ui/slidTip/slidTip'],function(slidTip){
+                            slidTip.show({
+                                type:5,
+                                text:"输入错误",
+                                delay:1
+                            });
+                        });
+                        return false;
+                    }
+                });
+            });
+        }
+
+        function show3(){
+            require(['common/ui/editer1/editer1'],function(d){
+                d.show({
+                    okText:"发布",
+                    cancelText:"取消",
+                    title:"提问",
+                    input1:false,
+                    textarea1Placeholder:"请输入内容",
+                    maxLength:10,
+                    onShow:function(){                          
+                    }
+                });
+              setTimeout(function(){
+                $(".qui-editer1 textarea").get(0).select();
+                },500);
+            });
+        }
+        </script>
+    </head>
+    <body>
+        <input id="ip1" type="button"  value="显示编辑器"  />
+        <input id="ip2" type="button"  value="没有标题栏的编辑器"  />
+
+        <input type="text" value="点击这里输入" id="ip3">
+    </body>
+</html>

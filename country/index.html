@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <title>选择城市组件</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <link href="../../../../m/basic/css/base.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../../../m/basic/css/headfoot.css" />
+    <link rel="stylesheet" href="../../../../m/project/plan/css/plan.css" />
+    <script src="../../../../m/basic/js/zepto.min.js"></script>
+    <script src="../../../../m/basic/js/zepto-touch.js"></script>
+    <script src="../../../../m/basic/js/zepto-fx.js"></script>
+    <script src="../../../../m/basic/js/require.js"></script>
+    <script src="../../../../m/basic/js/qyerUtil.js"></script>
+
+</head>
+<body>
+<article class="qui-page">
+    <div id="qui-scroll" class="qui-country">
+        <div class="qui-head">
+            <span>热门</span>
+            <span>亚洲</span>
+            <span>亚洲</span>
+            <span>亚洲</span>
+            <span>亚洲</span>
+            <span>亚洲</span>
+            <span>热门</span>
+            <span>热门</span>
+            <span>热门</span>
+            <span>热门</span>
+        </div>
+        <div class="qui-country-body qui-body">
+            <div class="dayTravel edit">
+                <ul class="detailList">
+                    <li class="travelDetailBox clearfix travelDetailBox_start">
+                        港澳台
+                    </li>
+                    <li class="travelDetailBox clearfix">
+                        泰国
+                    </li>
+                    <li class="travelDetailBox clearfix">
+                        马来西亚
+                    </li>
+                </ul>
+            </div>
+            <div>content2</div>
+            <div>content3</div>
+        </div>
+    </div>
+</article>
+
+
+<script>
+require(['common/ui/country/country'],function(Country){
+    var opt = {
+        el:$("#qui-scroll"),
+        tabs:$(".qui-head").children(),
+        contents:$(".qui-body").children()
+    };
+    var c = new Country(opt);
+    $(c).bind("selectcity",function(evt,d){
+        debugger
+    })
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>imgResize图片自适应宽高</title>
+<link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+</head>
+
+<body>
+
+<section class="container">
+	<dl>
+		<dt>正常图片：</dt>
+		<dd style="margin-bottom: 30px;"><p style="width: 100px; height: 100px; overflow: hidden; background-color: #f00;"><img src="http://static.qyer.com/images/place5/tmp/img300.jpg" alt="" /></p></dd>
+		<dt>图片自适应缩放：</dt>
+		<dd style="margin-bottom: 30px;"><p style="width: 100px; height: 100px; overflow: hidden; background-color: #f00;"><img src="http://static.qyer.com/images/place5/tmp/img300.jpg" alt="" /></p></dd>
+		<dt>图片自适应裁剪：</dt>
+		<dd style="margin-bottom: 30px;"><p style="width: 100px; height: 100px; overflow: hidden; background-color: #f00;"><img src="http://static.qyer.com/images/place5/tmp/img300.jpg" alt="" /></p></dd>
+	</dl>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+	require(['common/ui/imgResize/imgResize'],function(){
+		$("img").eq(1).fitImage();
+		$("img").eq(2).cutImage();
+	});
+});
+</script>
+</body>
+</html>

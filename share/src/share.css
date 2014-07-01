@@ -1,0 +1,18 @@
+.qui-popup-base_content { position:relative;}
+.qui-popup-shareContent { position:absolute; left:0; right:0; bottom:50px;}
+.qui-popup-shareList{ width:140px; margin:0 auto;}
+.qui-popup-shareList a{display:block;float:none;margin:20px auto;padding:0px;width:auto;height:40px;line-height:40px;font-size:18px;text-indent:55px;color:#323232;background-image:url(http://static.qyer.com/m/common/ui/share/icons-share.png);background-size:40px auto;background-repeat:no-repeat;cursor:pointer;}
+.qui-popup-shareList a.jiathis_button_tsina{background-position:0px 0px;}
+.qui-popup-shareList a.jiathis_button_qzone{background-position:0px -60px;}
+.qui-popup-shareList a.jiathis_button_renren{background-position:0px -120px;}
+.qui-popup-shareList a.jiathis_button_fb{background-position:0px -180px;}
+#qui-popup-shareList span { display:block !important; height:auto !important; background:none !important; margin:0 !important; padding:0 !important; font-size:inherit !important; line-height:inherit !important;}
+.qui-popup-shareCancel {
+    margin:15px;
+    height: 44px; line-height: 44px;
+    font-size: 16px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    border-radius: 4px;
+}

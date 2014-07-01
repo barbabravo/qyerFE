@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+<meta   http-equiv="Pragma"   content="no-cache">   
+<meta   http-equiv="Cache-Control"   content="no-cache">   
+<meta   http-equiv="Expires"   content="0"> 
+
+
+<link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+
+<script src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+<script src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+<script src="http://static.qyer.com/m/basic/js/require.js"></script>
+<script src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+
+</head>
+<body>
+<div class="qui-page">
+    <h2>范例: list</h2>
+    <p><input type="button" id="showDefaultList" value="标准列表" /></p>
+    <p><input type="button" id="showLongList" value="标准长列表" /></p>
+    <p><input type="button" id="showTemplateList" value="使用template模版列表" /></p>
+    <p><input type="button" id="showHTMLList" value="使用html直接列表" /></p>
+
+    <h2>范例: multi-list</h2>
+    <p><input type="button" id="showMultiList" value="多重筛选列表" /></p>
+
+<p>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</p>
+
+    <p><input type="button" id="listedit" value="先弹列表再弹编辑框" /></p>
+    <p><input type="button" id="editlist" value="先弹编辑框再弹列表" /></p>
+</div>
+
+
+<script type="text/javascript">
+    $('#showDefaultList').on(qyerUtil.EVENT.CLICK, function(){
+         require(['common/ui/list/list'], function(d) {
+            d.show({
+                title : '选择举报类型',
+                data : [
+                    { key : 0, val : '广告' },
+                    { key : 1, val : '灌水' },
+                    { key : 2, val : '色情污秽' },
+                    { key : 3, val : '危害国家安全' }
+                ],
+                listType : 'alignLeft',
+                onSelect : function (obj) {
+                    //alert('onSelect 回调: ' + obj.key);
+                }
+            });
+        });
+    });
+
+    $('#showLongList').on(qyerUtil.EVENT.CLICK, function(){
+         require(['common/ui/list/list'], function(d) {
+            d.show({
+                title : '选择举报类型',
+                data : [
+                    { val : '广告' },
+                    { val : '灌水' },
+                    { val : '色情污秽' },
+                    { val : '危害国家安全' },
+                    { val : '广告' },
+                    { val : '灌水' },
+                    { val : '色情污秽' },
+                    { val : '危害国家安全' },
+                    { val : '广告' },
+                    { val : '灌水' },
+                    { val : '色情污秽' },
+                    { val : '危害国家安全' },
+                    { val : '广告' },
+                    { val : '灌水' },
+                    { val : '色情污秽' },
+                    { val : '危害国家安全' }
+                ],
+                onShow : function () {
+                    //alert('onShow 回调');
+                }
+            });
+        });
+    })
+
+    $('#showTemplateList').on(qyerUtil.EVENT.CLICK, function(){
+         require(['common/ui/list/list'], function(l) {
+            l.show({
+                data : [
+                    { key : 34007, name : '伦敦塔桥', sub : 'London Tower Bridge', region: '伦敦', type : '景点' },
+                    { key : 'london', name : '伦敦', sub : 'London', region: '英国', type : '城市' },
+                    { key : 34003, name : '威斯敏斯特修道院（西敏寺）', sub : 'Westminster Abby', region: '伦敦', type : '景点' },
+                    { key : 67850, name : '爱丁堡城堡', sub : 'Edinburgh Castle', region: '爱丁堡', type : '景点' },
+                    { key : 67856, name : '苏格兰国家美术馆', sub : 'National Gallery of Scotland', region: '苏格兰', type : '景点' },
+                    { key : 68013, name : 'Eteaket', region: '爱丁堡', type : '美食' }
+                ],
+                template : [
+                    '<p class="qui-list_double_main">{{= name}}</p>'
+                ,   '<p class="qui-list_double_sub">{{= sub}}  {{= region}}{{= type}}</p>'
+                ].join(""),
+                onCancel : function () {
+                    //alert('onCancel 回调');
+                }
+            })
+        })
+    })
+
+    $('#showHTMLList').on(qyerUtil.EVENT.CLICK, function(){
+         require(['common/ui/list/list'], function(l) {
+            l.show({
+                data : [
+                    { key : 'london', val : '<div class="qui-list-li-place"><img src="http://pic.qyer.com/album/user/485/74/RUFQRR4GZg/index/cover" class="photo" /><p class="title"><span class="highlite">伦敦</span>  London</p><p class="sub">London, UK</p></div>' },
+                    { key : 1, val : '<p class="qui-list-li-simple"><span class="highlite">伦敦</span>塔桥</p>' },
+                    { key : 2, val : '<p class="qui-list-li-simple"><span class="highlite">伦敦</span>眼</p>' }
+                ],
+                    html : true,
+                onHide : function () {
+                    //alert('onHide 回调');
+                }
+            })
+        })
+    })
+
+
+    $('#showMultiList').on(qyerUtil.EVENT.CLICK, function(){
+         require(['common/ui/list/multi-list'], function(ml) {
+            ml.show({
+                title : '筛选和排序',
+                onConfirm : function(val) {
+                    alert('onConfirm 回调');
+                    console.log(val);
+                },
+                selected : { 0 : 'all', 'order' : 'byFav' },
+                defaultTab : 0,
+                group : [
+                    {
+                        title : '类型',
+                        data : [
+                            { key: 'all', val: '全部' },
+                            { key: 'site', val: '景点' },
+                            { key: 'exp', val: '体验' },
+                            { key: 'food', val: '美食' },
+                            { key: 'shopping', val: '购物' },
+                            { key: 'hotel', val: '酒店' },
+                            { key: 'all2', val: '全部' },
+                            { key: 'site2', val: '景点' },
+                            { key: 'exp2', val: '体验' },
+                            { key: 'food2', val: '美食' },
+                            { key: 'shopping2', val: '购物' },
+                            { key: 'hotel2', val: '酒店' }
+                        ]
+                    },
+                    {
+                        title : '评星',
+                        fullTitle : '通过用户综合评分筛选项目',
+                        data : [
+                            { val: [    '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ].join("")
+                            },
+                            { val: [    '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ].join("")
+                            },
+                            { val: [    '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ].join("")
+                            },
+                            { val: [    '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ].join("")
+                            },
+                            { val: [    '<span class="qui-icon _star _fill"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ,   '<span class="qui-icon _star"></span>'
+                                    ].join("")
+                            }
+                        ]
+                        //listType : 'demoStar'
+                    },
+                    {
+                        key : 'order',
+                        title : '排序',
+                        data : [
+                            { key: 'byAlphaBeta', val: '按字母顺序' },
+                            { key: 'byFav', val: '按想去数' },
+                            { key: 'byBeen', val: '按去过数' }
+                        ]
+                    }
+                ]//end of 'group'
+
+            });
+        })
+    })
+
+
+</script>
+
+
+<script>
+$('#listedit').on("click", function(){
+    require(['common/ui/list/list'], function(d) {
+        d.show({
+            title : '选择举报类型',
+            data : [
+                { key : 0, val : '广告' },
+                { key : 1, val : '灌水' },
+                { key : 2, val : '色情污秽' },
+                { key : 3, val : '危害国家安全' }
+            ],
+            onSelect : function (obj) {
+                require(['common/ui/editer1/editer1'],function(e){
+                    e.show({
+                        okText:"发布",
+                        cancelText:"取消",
+                        title:"提问",
+                        input1Placeholder:"请输入标题",
+                        textarea1Placeholder:"请输入内容",
+                        maxLength:10,
+                        onOK:function(){
+                            alert('onOK 的回调函数 ， 模拟提交数据。，点击确定后关闭对话框'); 
+                            alert(Array.apply(this,arguments).join("\n"));
+                        }
+                    });
+                });
+                
+            }
+        });
+    });
+});
+
+
+$('#editlist').on("click", function(){
+    require(['common/ui/editer1/editer1'],function(e){
+    e.show({
+        okText:"发布",
+        cancelText:"取消",
+        title:"提问",
+        input1Placeholder:"请输入标题",
+        textarea1Placeholder:"请输入内容",
+        maxLength:10,
+        onOK:function(){
+            require(['common/ui/list/list'], function(d) {
+                d.show({
+                    title : '选择举报类型',
+                    data : [
+                        { key : 0, val : '广告' },
+                        { key : 1, val : '灌水' },
+                        { key : 2, val : '色情污秽' },
+                        { key : 3, val : '危害国家安全' }
+                    ],
+                    onSelect : function (obj) {
+                        alert(obj.key);
+                    }
+                });
+            });
+        }
+    });
+});
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+	<meta charset="UTF-8">
+	<title>detail</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="http://static.qyer.com/m/basic/css/base.css" />
+	<link rel="stylesheet" href="http://static.qyer.com/m/basic/css/headfoot.css" />
+	<!-- <link rel="stylesheet" href="http://static.qyer.com/m/project/plan/css/plan.css" /> -->
+	<script type="text/javascript" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+	<script type="text/javascript" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+	<script type="text/javascript" src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+	
+	
+	<script>
+
+    	function show1(){
+			require(['common/ui/time/time'],function(select){
+				select.show({
+                    onSelect:function (aValueList) {
+                        alert(JSON.stringify(aValueList));
+                    }
+				});
+			});
+    	}
+
+
+    	function show2(){
+            require(['common/ui/time/time'],function(select){
+                select.show({
+                    hasDay:true,
+                    defaultHour:'03',
+                    defaultMinute:'15',
+                    defaultDay:'1',
+                    onSelect:function (aValueList) {
+                        alert(JSON.stringify(aValueList));
+                    }
+                });
+            });
+
+    	}
+
+
+    	$(function () {
+    		$('#ipu1').on(qyerUtil.EVENT.CLICK,function () {show1(); });
+    		$('#ipu2').on(qyerUtil.EVENT.CLICK,function () {show2(); });
+    	})
+
+	</script>
+	
+</head>
+<body style="padding-top: 100px;">
+
+	<input id="ipu1" type="button" value="选择时间,不带默认值"  />
+	<input id="ipu2" type="button" value="选择时间,带默认值,带第三列（次日）"  />
+
+        <div style="color:red;">因使用 touch 事件，请采用移动设备仿真形式查看。</div>
+
+
+</body>
+</html>

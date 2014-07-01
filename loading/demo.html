@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+        
+        <script src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/require.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+        <script>
+
+        $(function(){
+            $('#p1').on(qyerUtil.EVENT.CLICK,show1);
+            $('#p2').on(qyerUtil.EVENT.CLICK,show2);
+        });
+
+            function show1(){
+                require(['common/ui/loading/loading'],function(d){
+                    d.show({
+                        onShow:function(){
+                            setTimeout(function(){
+                                d.hide();
+                            },3000);
+                        }
+                    });
+                });
+            }
+            function show2(){
+                require(['common/ui/loading/loading'],function(d){
+                    d.show({
+                        loadImgSrc:'http://static.qyer.com/images/user2/exp/loading_icon.png'
+                    });
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="qui-page">
+            <input id="p1" type="button" value="show loading，并在3秒后关闭" />
+            <br />
+            <input id="p2" type="button" value="show loading - 自定义loading 图片"  />
+        </div>
+	</body>
+</html>

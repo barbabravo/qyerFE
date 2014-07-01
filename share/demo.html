@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>share分享插件</title>
+<link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/require.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+</head>
+
+<body>
+<!--script type="text/javascript">
+(function(){
+var p = {
+url:location.href,
+showcount:'1',/*是否显示分享总数,显示：'1'，不显示：'0' */
+desc:'默认分享理由',/*默认分享理由(可选)*/
+summary:'分享摘要',/*分享摘要(可选)*/
+title:'分享标题',/*分享标题(可选)*/
+site:'分享来源',/*分享来源 如：腾讯网(可选)*/
+pics:'http://www.jiathis.com/resource/images/plugins/browser/icon/chrome.png', /*分享图片的路径(可选)*/
+style:'203',
+width:98,
+height:22
+};
+var s = [];
+for(var i in p){
+s.push(i + '=' + encodeURIComponent(p[i]||''));
+}
+document.write(['<a version="1.0" class="qzOpenerDiv" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?',s.join('&'),'" target="_blank">分享</a>'].join(''));
+})();
+</script>
+<script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script-->
+
+
+
+<!-- JiaThis Button BEGIN -->
+<!--div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+</div>
+<script "text/javascript"> 
+var jiathis_config = { 
+	url: "http://www.qyer.com", 
+	title: "自定义网页标题 #微博话题#", 
+	summary:"分享的文本摘要" 
+} 
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script-->
+<!-- JiaThis Button END -->
+
+
+
+<div class="qui-page">
+    <p><input type="button" id="shareBtn" value="分享弹层" /></p>
+    <p><input type="button" id="shareBtn" value="自定义分享弹层" /></p>
+</div>
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+<br>
+11111
+
+<script>
+$(function(){
+	$("input").eq(0).on(qyerUtil.EVENT.CLICK, function(){
+		require(['common/ui/share/share'], function(a){
+			a();
+		});
+	});
+	$("input").eq(1).on(qyerUtil.EVENT.CLICK, function(){
+		require(['common/ui/share/share'], function(a){
+			a({
+				title : "这里是标题",
+				summary : "这里是摘要",
+				url : "http://www.qyer.com/",
+				pic : "http://www.jiathis.com/resource/images/plugins/browser/icon/chrome.png || http://www.jiathis.com/resource/images/plugins/browser/icon/chrome.png"
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

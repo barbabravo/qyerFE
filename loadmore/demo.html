@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <link href="http://static.qyer.com/m/basic/css/base.css" rel="stylesheet" type="text/css" />
+        
+        <script src="http://static.qyer.com/m/basic/js/zepto.min.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-touch.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/zepto-fx.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/require.js"></script>
+        <script src="http://static.qyer.com/m/basic/js/qyerUtil.js"></script>
+
+        <script>
+
+            function getHTML(aLen){
+                var html=[];
+                for (var i=0;i<aLen;i++) {
+                    html.push('<li>'+ Math.random() +'</li>');
+                };
+                html.push('<li>---------------------</li>');
+                return html.join('');
+            }
+
+            $(function(){
+                $('ul').html( getHTML(3) );
+                require(['common/ui/loadmore/loadmore'],function(l){
+                    $('#d1').qyerLoadMore({
+                        el : '.d1ul1',
+                        ipg:'head-logo',
+                        onLoadMore:function(pageNum){
+                            setTimeout(function(){
+                                $('#d1').qyerLoadMore('pushHTML',getHTML(5));
+
+                                if($('#d1').qyerLoadMore('pageNumber')==3){
+                                    alert("当前是" + $('#d1').qyerLoadMore('pageNumber') + ",翻到9页");
+                                    $('#d1').qyerLoadMore('pageNumber',9);
+                                };
+
+                                alert("当前页是："+$('#d1').qyerLoadMore('pageNumber'));
+
+                                if($('#d1').qyerLoadMore('pageNumber')>10){
+                                    alert("当前页是" + $('#d1').qyerLoadMore('pageNumber') + ",将取消加载更多按钮,并将在3秒后重新增加");
+                                    $('#d1').qyerLoadMore('removeBtn');
+                                    setTimeout(function(){
+                                        $("#d1").qyerLoadMore("addBtn");
+                                    },3000);
+                                }
+                            },1000);
+                        }
+                    });
+
+                    $('#d2').qyerLoadMore({
+                        onLoadMore:function(){
+                            setTimeout(function(){
+                                $('#d2').qyerLoadMore('setState',2);
+                                if($('#d2').qyerLoadMore('pageNumber')>3){
+                                    $('#d2').qyerLoadMore('pageNumber',1);
+                                };
+                            },1000);
+                        }
+                    });
+
+                    $('#d3').qyerLoadMore({
+                        normalText:'加载更多景点',
+                        loadingText:'正在查询景点。。。',
+                        errorText:'没找到更多景点，点击重试',
+                        autoLoadMore:true,
+                        onLoadMore:function(){
+                            setTimeout(function(){
+                                $('#d3').qyerLoadMore('pushHTML',getHTML(5));
+                                console.log($('#d3').qyerLoadMore('pageNumber'));
+                                if($('#d3').qyerLoadMore('pageNumber')>5) alert(11);
+                            },1000);
+                        },
+                    });
+
+
+                });
+            });
+        </script>
+        
+        <style>
+            #d1,#d2{
+                border: solid 1px #333;
+                margin-bottom: 20px;
+                width:100%;
+            }
+            .d1ul1{
+                display:inline-block;
+                width:45%;
+                background:#ccc;
+                vertical-align:top;
+            }
+            .d1ul2{
+                display:inline-block;
+                width:45%;
+                background:#eee;
+                vertical-align:top;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="qui-page">
+                
+            <div id="d1" >
+                <p>模拟正常加载成功,翻页2次后将翻到第9页，到第11页时按钮消失</p>
+                <ul class="d1ul1"></ul>
+                <ul class="d1ul2"></ul>
+            </div>
+
+            <div id="d2" >模拟加载错误<ul class="d2ul"></ul></div>
+            
+            
+            <div id="d3" >配置滚动到底部自动加载，以及显示的文字<ul class="d3ul"></ul></div>
+
+        </div>
+    </body>
+</html>
